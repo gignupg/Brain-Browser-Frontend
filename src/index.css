@@ -1,0 +1,184 @@
+:root {
+  --light-gray: #efebe9;
+  --gray: #d7ccc8;
+  --skin-color: #ffab91;
+  --yellow: #ffb74d;
+  --orange: #ff7043;
+  --header-size: 50px;
+}
+
+.card
+  .card-action
+  a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  margin-right: 0px;
+}
+
+#setup-original {
+  border-top: 1px solid #9e9e9e;
+}
+
+.collapsible-body {
+  padding: 0;
+}
+
+.login-title {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.header {
+  text-align: center;
+  background-color: var(--yellow);
+  padding: 10px;
+  margin: 0;
+  box-shadow: 0px 0px 10px 0 black;
+}
+
+.header-title {
+  margin: auto;
+}
+
+.collection a.collection-item {
+  color: var(--orange);
+}
+
+.input-field {
+  margin: 0;
+}
+
+.collection {
+  height: 216px;
+  overflow: auto;
+}
+
+.deck-name {
+  margin: auto;
+}
+
+#main-decks::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.main-submit {
+  margin-bottom: 10px;
+  margin-top: 0px;
+}
+
+.deck-setup {
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-description {
+  margin-top: 23px;
+}
+
+.row {
+  margin-bottom: 0;
+}
+
+.add-medium-margin {
+  margin-top: 60px;
+}
+
+.add-small-margin {
+  margin-top: 30px;
+}
+
+.add-tiny-margin {
+  margin-top: 15px;
+}
+
+thead {
+  font-size: large;
+}
+
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  width: 95vw;
+}
+
+.newDeckNote {
+  min-height: 120px !important;
+}
+
+.newDeckOriginalText {
+  min-height: 220px !important;
+}
+
+::placeholder {
+  line-height: 25px;
+}
+
+.select-wrapper input.select-dropdown {
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: large;
+  text-align: center;
+}
+
+.link {
+  color: var(--yellow);
+  cursor: pointer;
+}
+
+.dropdown-content {
+  min-width: 250px;
+}
+
+nav {
+  height: var(--header-size);
+  line-height: var(--header-size);
+}
+
+nav i, nav [class^="mdi-"], nav [class*="mdi-"], nav i.material-icons {
+  height: var(--header-size);
+  line-height: var(--header-size);
+}
+
+nav .button-collapse i {
+  height: var(--header-size);
+  line-height: var(--header-size);
+}
+
+nav .brand-logo { 
+  font-size: 24px; 
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 70vw;
+  display: block;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 601px){
+  nav, nav .nav-wrapper i, nav a.button-collapse, nav a.button-collapse i {
+      height: var(--header-size);
+      line-height: var(--header-size);
+  }
+}
+
+.original-input, .original-input:focus {
+  height: 100%;
+  border: 1px solid var(--gray);
+  outline: none;
+}
+
+.button-spacer {
+  margin: 2.5px;
+}
