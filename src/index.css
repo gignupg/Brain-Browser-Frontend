@@ -182,3 +182,7 @@ nav .brand-logo {
 .button-spacer {
   margin: 2.5px;
 }
+
+.truncate {
+  text-overflow: ellipsis;
+}

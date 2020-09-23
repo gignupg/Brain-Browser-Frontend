@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import Authentication from './authentication/Authentication';
-import Header from './components/Header';
+import React, { useContext } from 'react';
+import Authentication from './components/auth/Authentication';
+import AppLayout from './components/layout/AppLayout';
+import UserContext from './context/UserContext';
 
 function App() {
 
-  const [userChanged, setUserChanged] = useState("no change so far");
-
-  const [authentication, setAuthentication] = useState(false);
+  const { user } = useContext(UserContext);
+  const { auth } = user;
 
   return (
     <>
       {
-        authentication ?
-          <Header setUserChanged={setUserChanged} authentication={authentication}/> :
-          <Authentication setUserChanged={setUserChanged} />
+        auth ? 
+          <AppLayout />
+        :
+          <Authentication />
       }
     </>
   );

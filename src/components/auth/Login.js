@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import UserContext from '../../context/UserContext';
 
-const Login = ({ successfulReg, setSuccessfulReg, setAuthSwitch, setUserChanged }) => {
+const Login = ({ setSuccessfulReg, successfulReg }) => {
+
+    const { user, setUser } = useContext(UserContext);
 
     const [loginForm, setLoginForm] = useState({
         input: "",
@@ -22,8 +26,9 @@ const Login = ({ successfulReg, setSuccessfulReg, setAuthSwitch, setUserChanged 
 
         if (!password) {
             setError("Fields can't be left empty!");
+            setSuccessfulReg("");
         } else {
-            fetch('/login/', {
+            fetch('http://localhost:8000/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,21 +38,42 @@ const Login = ({ successfulReg, setSuccessfulReg, setAuthSwitch, setUserChanged 
                     password: password
                 })
             }).then(res => {
-                return res.json()
-            })
-            .then(data => console.log(data))
-            .catch(error => {
-               setSuccessfulReg(false)
-               setError(error.message);
-            })
+                return res.json();
+            }).then(data => {
+                if (!data.auth) {
+                    setError("Something went wrong. Password and username/email didn't match!");
+                    setSuccessfulReg("");
+                } else {
+                    setUser({
+                        ...user,
+                        auth: data.auth,
+                        username: data.username,
+                        email: data.email
+                    });
+                    setSuccessfulReg("");
+                }
+            }).catch(error => {
+                setError(error.message);
+                setSuccessfulReg("");
+            });
         }
     };
 
     return (
         <div className="container">
-            <h4 className="login-title">Login</h4>
-            {successfulReg && <div className="row"><p className="col s12 m8 l6 offset-m2 offset-l3 center-align deep-orange-text text-lighten-1">Registration successful! A confirmation email has been sent to {successfulReg}. Please confirm your email, before logging in!</p></div>}
-            {error && <div className="row"><p className="col s12 m8 l6 offset-m2 offset-l3 center-align deep-orange-text text-lighten-1">{error}</p></div>}
+            <h4 className="login-title add-medium-margin">Login</h4>
+            {successfulReg &&
+                <div className="row">
+                    <p className="col s12 m8 l6 offset-m2 offset-l3 center-align deep-orange-text text-lighten-1">
+                        Registration successful! A confirmation email has been sent to {successfulReg}. Please confirm your email, before logging in!
+                    </p>
+                </div>}
+            {error &&
+                <div className="row">
+                    <p className="col s12 m8 l6 offset-m2 offset-l3 center-align deep-orange-text text-lighten-1">
+                        {error}
+                    </p>
+                </div>}
             <div className="row">
                 <div className="col s12 m8 l6 offset-m2 offset-l3">
                     <div className="card small z-depth-5">
@@ -72,7 +98,10 @@ const Login = ({ successfulReg, setSuccessfulReg, setAuthSwitch, setUserChanged 
                             </form>
                             <div className="row">
                                 <div className="card-action">
-                                    <p>Not registered yet? Click <span onClick={() => setAuthSwitch("registration")} className="link">here</span> to register.</p>
+                                    <p>Not registered yet? Click <Link to="/registration" className="link">
+                                        here
+                                        </Link> to register.
+                                    </p>
                                 </div>
                             </div>
                         </div>

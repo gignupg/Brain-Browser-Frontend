@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import M from "materialize-css";
 import { originalTextSample } from './DeckHelper';
-import { sampleDeck } from '../Data';
+import { sampleDeck } from '../../Data';
 
 const DeckInfo = () => {
 

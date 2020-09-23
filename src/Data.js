@@ -1,4 +1,4 @@
-import { originalTextSample } from './deck/DeckHelper';
+import { originalTextSample } from './components/deck/DeckHelper';
 
 export const vocab = [
     {

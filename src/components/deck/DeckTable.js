@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import M from "materialize-css";
-import { vocab } from "../Data";
+import { vocab } from "../../Data";
 
 const DeckTable = () => {
     const originalArr = Object.keys(vocab[0]);

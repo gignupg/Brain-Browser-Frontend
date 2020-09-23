@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { vocab } from '../Data';
+import { vocab } from '../../Data';
 import M from "materialize-css";
 
 const Entry = () => {

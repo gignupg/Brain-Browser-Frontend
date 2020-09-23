@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { defaultLayout } from '../Data';
+import { defaultLayout } from '../../Data';
 import M from "materialize-css";
 
 const CreateNewDeck = ({ setPage }) => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { deckArr } from '../Data';
+import { deckArr } from '../../Data';
 
 const Decks = () => {
 

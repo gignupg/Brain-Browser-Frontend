@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
-const Registration = ({ setSuccessfulReg, setAuthSwitch }) => {
+const Registration = ({ setSuccessfulReg }) => {
+
+    let history = useHistory();
 
     const [error, setError] = useState("");
 
@@ -24,10 +28,10 @@ const Registration = ({ setSuccessfulReg, setAuthSwitch }) => {
 
         if (password !== password2) {
             setError("Your passwords don't match!");
-        } else if (password.length < 8) {
-            setError("Your password needs to be at least 8 characters long!");
+        } else if (password.length < 6) {
+            setError("Your password needs to be at least 6 characters long!");
         } else if (username && email && password) {
-            fetch('/registration/', {
+            fetch('http://localhost:8000/registration/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,17 +42,17 @@ const Registration = ({ setSuccessfulReg, setAuthSwitch }) => {
                     password: password
                 })
             }).then(res => {
-                return res.json()
+                return res.json();
             })
-            .then(data => {
-                console.log(data)
-                setAuthSwitch("login");
-                setSuccessfulReg(email);
-            })
-            .catch(error => {
-               setSuccessfulReg(false)
-               setError(error.message);
-            })
+                .then(data => {
+                    console.log(data);
+                    setSuccessfulReg(data.email);
+                    history.push("/login");
+                })
+                .catch(error => {
+                    console.log(error);
+                    setError(error.message);
+                });
         } else {
             setError("All fields are required!");
         }
@@ -58,7 +62,7 @@ const Registration = ({ setSuccessfulReg, setAuthSwitch }) => {
 
     return (
         <div className="container">
-            <h4 className="login-title">Registration</h4>
+            <h4 className="login-title add-medium-margin">Registration</h4>
             {error && <div className="row"><p className="col s12 m8 l6 offset-m2 offset-l3 center-align deep-orange-text text-lighten-1">{error}</p></div>}
             <div className="row">
                 <div className="col s12 m8 l6 offset-m2 offset-l3">
@@ -95,7 +99,7 @@ const Registration = ({ setSuccessfulReg, setAuthSwitch }) => {
                             </form>
                             <div className="row">
                                 <div className="card-action">
-                                    <p>Already registered? Click <span onClick={() => setAuthSwitch("login")} className="link">here</span> to login.</p>
+                                    <p>Already registered? Click <Link to="/login" className="link">here</Link> to login.</p>
                                 </div>
                             </div>
                         </div>
