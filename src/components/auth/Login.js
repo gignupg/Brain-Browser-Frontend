@@ -4,7 +4,7 @@ import UserContext from '../../context/UserContext';
 
 const Login = ({ setSuccessfulReg, successfulReg }) => {
 
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
 
     const [loginForm, setLoginForm] = useState({
         input: "",
@@ -44,12 +44,13 @@ const Login = ({ setSuccessfulReg, successfulReg }) => {
                     setError("Something went wrong. Password and username/email didn't match!");
                     setSuccessfulReg("");
                 } else {
-                    setUser({
-                        ...user,
+                    const user = {
                         auth: data.auth,
                         username: data.username,
-                        email: data.email
-                    });
+                        email: data.email 
+                    }
+                    setUser(user);
+                    localStorage.setItem('user', JSON.stringify(user));
                     setSuccessfulReg("");
                 }
             }).catch(error => {

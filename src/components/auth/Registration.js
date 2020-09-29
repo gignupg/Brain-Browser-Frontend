@@ -43,16 +43,16 @@ const Registration = ({ setSuccessfulReg }) => {
                 })
             }).then(res => {
                 return res.json();
-            })
-                .then(data => {
-                    console.log(data);
+            }).then(data => {
+                if (data.error) {
+                    setError(data.msg);
+                } else {
                     setSuccessfulReg(data.email);
                     history.push("/login");
-                })
-                .catch(error => {
-                    console.log(error);
-                    setError(error.message);
-                });
+                }
+            }).catch(error => {
+                setError(error.message);
+            });
         } else {
             setError("All fields are required!");
         }

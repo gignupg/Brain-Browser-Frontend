@@ -19,11 +19,13 @@ const Header = () => {
     });
 
     const logoutHandler = () => {
-        setUser({
+        const loggedOutUser = {
             auth: false,
             username: "",
             email: ""
-        });
+        }
+        setUser(loggedOutUser);
+        localStorage.setItem('user', JSON.stringify(loggedOutUser));
     }
 
     return (
