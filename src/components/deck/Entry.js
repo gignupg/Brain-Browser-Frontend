@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { vocab } from '../../Data';
 import M from "materialize-css";
+import { useHistory } from "react-router-dom";
 
 const Entry = () => {
+  const history = useHistory();
 
   useEffect(() => {
     const tagElems = document.querySelectorAll('.tag');
@@ -39,7 +41,10 @@ const Entry = () => {
             );
           })
         }
-        <button className="main-submit deep-orange lighten-1 col s12 waves-effect waves-light btn add-tiny-margin">Submit</button>
+        <button 
+          onClick={() => history.push('/deck')}
+          className="main-submit deep-orange lighten-1 col s12 waves-effect waves-light btn add-tiny-margin"
+          >Submit</button>
       </ul>
     </div>
   );

@@ -30,7 +30,7 @@ const DeckInfo = () => {
             <div className="row">
                 <h6 className="col s2 m3 l2 offset-l2 right-align">Original Text:</h6>
 
-                <a className="col s8 m6 l4 offset-s1 main-submit brown lighten-5 black-text waves-effect waves-light btn modal-trigger" href="#modal-deck">View</a>
+                <a className="col s8 m6 l4 offset-s1 main-submit brown lighten-5 black-text waves-effect waves-light btn modal-trigger" href="#!">View</a>
 
                 <div id="modal-deck" className="modal">
                     <div className="modal-content">

@@ -48,7 +48,7 @@ const Header = () => {
                         <div className="brand-logo center black-text">Skam - T2 E1 C1 - El fiestón de Hugo</div>
 
                         <ul id="nav-mobile" className="left">
-                            <li><a href="#!"><i className="material-icons left black-text">arrow_back</i></a></li>
+                            <li><a href="/"><i className="material-icons left black-text">arrow_back</i></a></li>
                         </ul>
                         <ul className="right">
                             <li><a className="dropdown-trigger" href="#!" data-target="dropdown1"><i className="material-icons black-text">account_circle</i></a></li>

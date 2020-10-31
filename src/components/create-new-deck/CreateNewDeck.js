@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { defaultLayout } from '../../Data';
 import M from "materialize-css";
+import { useHistory } from "react-router-dom";
 
 const CreateNewDeck = ({ setPage }) => {
+    const history = useHistory();
 
     useEffect(() => {
         const tagElems = document.querySelectorAll('.tag');
@@ -106,7 +108,7 @@ const CreateNewDeck = ({ setPage }) => {
                 </ul>
             </div>
             <div className="row">
-                <button onClick={() => setPage("Deck")} className="btn waves-effect waves-light deep-orange lighten-1 col s10 m6 l4 offset-s1 offset-m3 offset-l4 add-tiny-margin">Create</button>
+                <button onClick={() => history.push('/deck')} className="btn waves-effect waves-light deep-orange lighten-1 col s10 m6 l4 offset-s1 offset-m3 offset-l4 add-tiny-margin">Create</button>
             </div>
             <div className="add-small-margin"></div>
         </>

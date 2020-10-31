@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import M from "materialize-css";
-import { sampleDeck } from "../Data";
+import { sampleDeck, sampleLayout } from "../../Data";
 import { originalTextSample } from './DeckHelper';
-import { sampleLayout } from '../Data';
+import { useHistory } from "react-router-dom";
 
 const DeckSettings = ({ setPage }) => {
+    const history = useHistory();
 
     console.log(sampleDeck.tags.map(elem => {
         return { tag: elem };
@@ -113,7 +114,7 @@ const DeckSettings = ({ setPage }) => {
                 </ul>
             </div>
             <div className="row">
-                <button onClick={() => setPage("Deck")} className="btn waves-effect waves-light deep-orange lighten-1 col s10 m6 l4 offset-s1 offset-m3 offset-l4">Save Changes</button>
+                <button onClick={() => history.push("/deck")} className="btn waves-effect waves-light deep-orange lighten-1 col s10 m6 l4 offset-s1 offset-m3 offset-l4">Save Changes</button>
             </div>
             <div className="add-small-margin"></div>
         </>

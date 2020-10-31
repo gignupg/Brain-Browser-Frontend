@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import M from "materialize-css";
 import Search from './Search';
 import Decks from './Decks';
+import { useHistory } from "react-router-dom";
 
 const Main = ({ setPage }) => {
+    const history = useHistory();
 
     useEffect(() => {
         var tooltippedElems = document.querySelectorAll('.tooltipped');
@@ -36,7 +38,7 @@ const Main = ({ setPage }) => {
             <Decks />
             <div className="fixed-action-btn">
                 <button
-                    onClick={() => setPage("Create New Deck")}
+                    onClick={() => history.push('/create-new-deck')}
                     className="btn-floating waves-effect waves-light btn-large deep-orange lighten-1 tooltipped"
                 >
                     <i className="large material-icons">add</i>
